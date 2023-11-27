@@ -1,17 +1,28 @@
-import { ActionPanel, Detail, List, Action } from "@raycast/api";
+import {
+  Color,
+  Icon,
+  List,
+} from '@raycast/api';
 
 export default function Command() {
   return (
     <List>
       <List.Item
-        icon="list-icon.png"
-        title="Greeting"
-        actions={
-          <ActionPanel>
-            <Action.Push title="Show Details" target={<Detail markdown="# Hey! 👋" />} />
-          </ActionPanel>
-        }
+        title="An Item with Accessories"
+        accessories={[
+          { text: `An Accessory Text`, icon: Icon.Hammer },
+          { text: { value: `A Colored Accessory Text`, color: Color.Orange }, icon: Icon.Hammer },
+          { icon: Icon.Person, tooltip: "A person" },
+          { text: "Just Do It!" },
+          { date: new Date() },
+          { tag: new Date() },
+          { tag: { value: new Date(), color: Color.Magenta } },
+          { tag: { value: "User", color: Color.Magenta }, tooltip: "Tag with tooltip" },
+        ]}
       />
+      <List.Section title='items'>
+        <List.Item title="Camden Hells" />
+      </List.Section>
     </List>
   );
 }
